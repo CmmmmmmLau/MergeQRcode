@@ -100,10 +100,9 @@
         <div class="code-footer">长按并扫描二维码付款</div>
     </div>
 
-    <!--设定一个变量用来赋值目标容器-->
     <!--二维码生成参数设定-->
     <script>
-        var divchoose = "canvas-all";
+        var divchoose = "canvas-all"
         var options_object = {
             width: 300,
             height: 300,
@@ -121,7 +120,6 @@
         };
         var qrcode = new QRCode(document.getElementById("canvas"), options_object);
     </script>
-
 
     <!--根据UA判定并显示对应元素-->
     <script>
