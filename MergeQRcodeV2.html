@@ -100,29 +100,23 @@
         <div class="code-footer">长按并扫描二维码付款</div>
     </div>
 
-    <!--设定一个变量用来赋值目标容器和logo的base64-->
-    <!--但目前logo的改变并不会生效,不知道为什么-->
-    <script>
-        var codechose = "canvas-all";
-        <!--设定LOGO-->
-        var logo = "all.jpg";
-    </script>
-
+    <!--设定一个变量用来赋值目标容器-->
     <!--二维码生成参数设定-->
     <script>
+        var divchoose = "canvas-all";
         var options_object = {
             width: 300,
             height: 300,
             colorDark : "#000000",
             colorLight : "#ffffff",
-            logo: logo,
+            logo: "all.jpg",
             logoMaxWidth: 100,
             logoMaxHeight: 100,
             correctLevel : QRCode.CorrectLevel.Q, // L, M, Q, H
             onRenderingEnd: (qrCodeOptions, dataURL)=> {
                 var img = new Image()
                 img.src = dataURL
-                document.getElementById(codechose).appendChild(img);
+                document.getElementById(divchoose).appendChild(img);
             }
         };
         var qrcode = new QRCode(document.getElementById("canvas"), options_object);
@@ -135,9 +129,27 @@
             window.location.href = url.alipay;
         } else if(navigator.userAgent.match(/MicroMessenger\//i)) {
             document.getElementById("code-wechat").style.display = "block";
+            <!--清除二维码并生成新二维码-->
+            <!--如果不需要更新Logo可以直接将132~148行删除-->
+            qrcode.clear();
+            options_object = {
+                width: 300,
+                height: 300,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                logo: "wechat.jpg",
+                logoMaxWidth: 100,
+                logoMaxHeight: 100,
+                correctLevel : QRCode.CorrectLevel.Q, // L, M, Q, H
+                onRenderingEnd: (qrCodeOptions, dataURL)=> {
+                    var img = new Image()
+                    img.src = dataURL
+                    document.getElementById(divchoose).appendChild(img);
+                }
+            }
+            var qrcode = new QRCode(document.getElementById("canvas"), options_object);
+            divchoose = "canvas-wechat";
             qrcode.makeCode(url.wechat);
-            codechose = "canvas-wechat";
-            logo = "wechat.jpg"
         } else if(navigator.userAgent.match(/QQ\//i)) {
         } else {
             document.getElementById("code").style.display = "block";
