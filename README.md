@@ -26,3 +26,6 @@
 2.剩余步骤同上个方案
 
 [Demo](https://cmmmmmm.com/qrcode/MergeQRcode2.html "Demo")
+
+## Reference
+https://mkblog.cn/922/
