@@ -8,7 +8,9 @@
 因此作废.
 ### 使用方法
 1.下载源码并部署到自己的网站上
+
 2.获取自己的二维码,通过第三方网站识别获取二维码的内容.
+
 3.将识别出来的链接替换掉源码中的链接即可.
 
 [Demo](https://cmmmmmm.com/qrcode/MergeQRcode.html)
@@ -20,6 +22,7 @@
 
 ### 使用方法
 1.`npm install easyqrcodejs`
+
 2.剩余步骤同上个方案
 
 [Demo](https://cmmmmmm.com/qrcode/MergeQRcode2.html "Demo")
